@@ -1,6 +1,6 @@
 # oleh_shop_app
 
-A new Flutter project.
+Tugas Besar ke-2 Aplikasi Berbasis Platform
 
 ## Getting Started
 
