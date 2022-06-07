@@ -1,6 +1,7 @@
 # oleh_shop_app
 
 Tugas Besar ke-2 Aplikasi Berbasis Platform
+
 Anggota Kelompok 12:
 1. Kevin Adrian Manurung - 1301190392
 2. Imam Rasyidin Saputra - 1301194448
