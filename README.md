@@ -1,4 +1,4 @@
-# oleh_shop_app
+# oleh_shop_mobile_app
 
 Tugas Besar ke-2 Aplikasi Berbasis Platform
 
