@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:oleh_shop_app/models/oleh.dart';
+import 'package:oleh_shop_app/webservice/WebService.dart';
 import 'package:oleh_shop_app/pages/DetailOleh.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -9,6 +11,22 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  List<oleh> _oleh = <oleh>[];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadOleh();
+  }
+
+  void _loadOleh() async{
+    final webservice = WebService();
+    final results = await webservice.loadOleh();
+    setState(() {
+      _oleh = results;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<Map> myProducts =
@@ -65,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       childAspectRatio: 3 / 2,
                       crossAxisSpacing: 20,
                       mainAxisSpacing: 20),
-                  itemCount: myProducts.length,
+                  itemCount: _oleh.length,
                   itemBuilder: (BuildContext ctx, index) {
                     return Container(
                       alignment: Alignment.center,
