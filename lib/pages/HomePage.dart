@@ -90,12 +90,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Column(
                         children: [
                           Image.network(
-                            'https://png.pngtree.com/png-clipart/20190904/original/pngtree-photo-icon-png-image_4490555.jpg',
-                            width: 80,
-                            height: 80,
+                            'http://10.0.2.2:8000/storage/'+_oleh[index].gambar,
+                            //width: 80,
+                            height: 90,
+                            fit:BoxFit.fill
                           ),
-                          Text(myProducts[index]["name"]),
-                          Text('Rp 15.000')
+                          Text(_oleh[index].nama),
+                          Text(_oleh[index].harga.toString())
                         ],
                       ),
                       decoration: const BoxDecoration(
