@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oleh_shop_app/models/oleh.dart';
 
 class OlehDetail extends StatefulWidget {
   const OlehDetail({Key? key}) : super(key: key);
@@ -8,8 +9,10 @@ class OlehDetail extends StatefulWidget {
 }
 
 class _OlehDetail extends State<OlehDetail> {
+
   @override
   Widget build(BuildContext context) {
+    final entry = ModalRoute.of(context)!.settings.arguments as oleh;
     return Scaffold(
       backgroundColor: Colors.blueGrey[50],
       body: SafeArea(
@@ -23,7 +26,7 @@ class _OlehDetail extends State<OlehDetail> {
                 alignment: Alignment.center,
                 margin: const EdgeInsets.only(bottom: 20),
                 child: Image.network(
-                  'https://png.pngtree.com/png-clipart/20190904/original/pngtree-photo-icon-png-image_4490555.jpg',
+                  'http://10.0.2.2:8000/storage/'+entry.gambar,
                   width: 300,
                   height: 300,
                 ),
@@ -32,8 +35,8 @@ class _OlehDetail extends State<OlehDetail> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Product 1',
-                    style: TextStyle(fontSize: 30),
+                    entry.nama,
+                    style: const TextStyle(fontSize: 30),
                   ),
                   Container(
                     alignment: Alignment.center,
@@ -48,13 +51,13 @@ class _OlehDetail extends State<OlehDetail> {
                 ],
               ),
               Text(
-                'Rp15000',
+                entry.harga.toString(),
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.yellow[700],
                 ),
               ),
-              Text('900 terjual'),
+              Text(entry.terjual.toString()+' terjual'),
               Container(
                 margin: const EdgeInsets.only(top: 20),
                 child: Column(
@@ -74,17 +77,12 @@ class _OlehDetail extends State<OlehDetail> {
                       margin: EdgeInsets.only(
                         bottom: 10,
                       ),
-                      child: Text(
-                        'Berasal Dari: Bali',
-                        style: TextStyle(fontSize: 15),
-                      ),
+                      // child: Text(
+                      //   'Berasal Dari: Bali',
+                      //   style: TextStyle(fontSize: 15),
+                      // ),
                     ),
-                    Text(
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, '
-                            'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
-                            'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. '
-                            'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. '
-                            'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+                    Text(entry.deskripsi)
                   ],
                 ),
               )

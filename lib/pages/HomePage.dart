@@ -85,22 +85,27 @@ class _MyHomePageState extends State<MyHomePage> {
                       mainAxisSpacing: 20),
                   itemCount: _oleh.length,
                   itemBuilder: (BuildContext ctx, index) {
-                    return Container(
-                      alignment: Alignment.center,
-                      child: Column(
-                        children: [
-                          Image.network(
-                            'http://10.0.2.2:8000/storage/'+_oleh[index].gambar,
-                            //width: 80,
-                            height: 90,
-                            fit:BoxFit.fill
-                          ),
-                          Text(_oleh[index].nama),
-                          Text(_oleh[index].harga.toString())
-                        ],
-                      ),
-                      decoration: const BoxDecoration(
-                        color: Colors.amber,
+                    return GestureDetector(
+                      onTap: (){
+                        Navigator.pushNamed(ctx, '/detail', arguments: _oleh[index]);
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: Column(
+                          children: [
+                            Image.network(
+                              'http://10.0.2.2:8000/storage/'+_oleh[index].gambar,
+                              //width: 80,
+                              height: 90,
+                              fit:BoxFit.fill
+                            ),
+                            Text(_oleh[index].nama),
+                            Text(_oleh[index].harga.toString())
+                          ],
+                        ),
+                        decoration: const BoxDecoration(
+                          color: Colors.amber,
+                        ),
                       ),
                     );
                   },

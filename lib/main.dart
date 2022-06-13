@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:oleh_shop_app/pages/HomePage.dart';
+import 'package:oleh_shop_app/pages/DetailOleh.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: const MyHomePage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const MyHomePage(),
+        '/detail': (context) => const OlehDetail(),
+      },
+      //home: const MyHomePage(),
     );
   }
 }
