@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:oleh_shop_app/models/oleh.dart';
 import 'package:oleh_shop_app/webservice/WebService.dart';
-//import 'package:oleh_shop_app/pages/DetailOlehPage.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -167,17 +166,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.pushNamed(context, '/pesanan');
               },
             ),
-            const ListTile(
+            ListTile(
               selected: true,
-              leading: CircleAvatar(
+              leading: const CircleAvatar(
                 child: Icon(
                   Icons.logout,
                   color: Colors.white,
                   size: 20.0,
                 ),
               ),
-              title: Text("Log Out"),
-              // onTap: () {},
+              title: const Text("Log Out"),
+              onTap: () {
+                Navigator.pushNamed(context, '/logout');
+              },
             ),
           ],
         ),

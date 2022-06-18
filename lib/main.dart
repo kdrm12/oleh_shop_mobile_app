@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
         '/detail': (context) => const OlehDetail(),
         // '/keranjang': (context) => const,
         '/pesanan': (context) => const PesananPage(),
+        '/logout': (context) => const SignInPage(),
       },
       //home: const MyHomePage(),
     );
