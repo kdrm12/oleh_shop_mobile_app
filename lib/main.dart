@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:oleh_shop_app/pages/HomePage.dart';
-import 'package:oleh_shop_app/pages/DetailOleh.dart';
+import 'package:oleh_shop_app/pages/DetailOlehPage.dart';
 
 void main() {
   runApp(const MyApp());

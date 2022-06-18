@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:oleh_shop_app/models/oleh.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class OlehDetail extends StatefulWidget {
   const OlehDetail({Key? key}) : super(key: key);
@@ -9,7 +10,6 @@ class OlehDetail extends StatefulWidget {
 }
 
 class _OlehDetail extends State<OlehDetail> {
-
   @override
   Widget build(BuildContext context) {
     final entry = ModalRoute.of(context)!.settings.arguments as oleh;
@@ -25,10 +25,11 @@ class _OlehDetail extends State<OlehDetail> {
                 color: Colors.yellow,
                 alignment: Alignment.center,
                 margin: const EdgeInsets.only(bottom: 20),
-                child: Image.network(
-                  'http://10.0.2.2:8000/storage/'+entry.gambar,
-                  width: 300,
+                child: CachedNetworkImage(
+                  imageUrl: 'http://10.0.2.2:8000/storage/' + entry.gambar,
+                  //width: 300,
                   height: 300,
+                  fit: BoxFit.fill,
                 ),
               ),
               Row(
@@ -57,7 +58,7 @@ class _OlehDetail extends State<OlehDetail> {
                   color: Colors.yellow[700],
                 ),
               ),
-              Text(entry.terjual.toString()+' terjual'),
+              Text(entry.terjual.toString() + ' terjual'),
               Container(
                 margin: const EdgeInsets.only(top: 20),
                 child: Column(

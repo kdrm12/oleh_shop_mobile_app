@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../models/oleh.dart';
 
-class WebService{
-  Future<List<oleh>> loadOleh() async{
+class WebService {
+  Future<List<oleh>> loadOleh() async {
     String url = "http://10.0.2.2:8000/api/oleh/get/";
     final response = await http.get(Uri.parse(url));
 

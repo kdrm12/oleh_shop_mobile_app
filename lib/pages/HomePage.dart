@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:oleh_shop_app/models/oleh.dart';
 import 'package:oleh_shop_app/webservice/WebService.dart';
-import 'package:oleh_shop_app/pages/DetailOleh.dart';
+//import 'package:oleh_shop_app/pages/DetailOlehPage.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
     _loadOleh();
   }
 
-  void _loadOleh() async{
+  void _loadOleh() async {
     final webservice = WebService();
     final results = await webservice.loadOleh();
     setState(() {
@@ -29,44 +30,36 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Map> myProducts =
-    List.generate(10, (index) => {"name": "Product $index"}).toList();
-
     return Scaffold(
+      appBar: AppBar(title: const Text("Home")),
       backgroundColor: Colors.blueGrey[50],
       body: SafeArea(
         child: Container(
           margin: const EdgeInsets.all(10),
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: const [
-                  Icon(
-                    Icons.menu,
-                    size: 50,
-                  ),
-                  Text(
-                    'OLEH SHOP',
-                    style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.w900,
-                      color: Colors.black87,
-                      // shadows: [
-                      //   Shadow(
-                      //       color: Colors.black,
-                      //       offset: Offset(6, 4),
-                      //       blurRadius: 10),
-                      // ],
-                    ),
-                  ),
-                  Icon(
-                    Icons.account_circle_outlined,
-                    size: 50,
-                  ),
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   crossAxisAlignment: CrossAxisAlignment.center,
+              //   children: const [
+              //     Icon(
+              //       Icons.menu,
+              //       size: 50,
+              //     ),
+              //     Text(
+              //       'OLEH SHOP',
+              //       style: TextStyle(
+              //         fontSize: 40,
+              //         fontWeight: FontWeight.w900,
+              //         color: Colors.black87,
+              //       ),
+              //     ),
+              //     Icon(
+              //       Icons.account_circle_outlined,
+              //       size: 50,
+              //     ),
+              //   ],
+              // ),
               Container(
                 margin: const EdgeInsets.only(bottom: 10),
                 child: const TextField(
@@ -86,21 +79,40 @@ class _MyHomePageState extends State<MyHomePage> {
                   itemCount: _oleh.length,
                   itemBuilder: (BuildContext ctx, index) {
                     return GestureDetector(
-                      onTap: (){
-                        Navigator.pushNamed(ctx, '/detail', arguments: _oleh[index]);
+                      onTap: () {
+                        Navigator.pushNamed(ctx, '/detail',
+                            arguments: _oleh[index]);
                       },
                       child: Container(
                         alignment: Alignment.center,
                         child: Column(
                           children: [
-                            Image.network(
-                              'http://10.0.2.2:8000/storage/'+_oleh[index].gambar,
-                              //width: 80,
+                            SizedBox(
                               height: 90,
-                              fit:BoxFit.fill
+                              width: 185,
+                              child: CachedNetworkImage(
+                                imageUrl: 'http://10.0.2.2:8000/storage/' +
+                                    _oleh[index].gambar,
+                                //width: 80,
+                                fit: BoxFit.fill,
+                              ),
                             ),
-                            Text(_oleh[index].nama),
-                            Text(_oleh[index].harga.toString())
+                            Container(
+                              margin: const EdgeInsets.all(5),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    _oleh[index].nama,
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18),
+                                  ),
+                                  Text("Rp" + _oleh[index].harga.toString()),
+                                ],
+                              ),
+                            )
                           ],
                         ),
                         decoration: const BoxDecoration(
@@ -113,6 +125,52 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ],
           ),
+        ),
+      ),
+      drawer: Drawer(
+        child: Column(
+          children: const [
+            UserAccountsDrawerHeader(
+              accountName: Text("Kevin"),
+              accountEmail: Text("081285770221"),
+            ),
+            ListTile(
+              selected: true,
+              leading: CircleAvatar(
+                child: Icon(
+                  Icons.shopping_cart,
+                  color: Colors.white,
+                  size: 20.0,
+                ),
+              ),
+              title: Text("Keranjang"),
+              // onTap: () {},
+            ),
+            ListTile(
+              selected: true,
+              leading: CircleAvatar(
+                child: Icon(
+                  Icons.list_alt,
+                  color: Colors.white,
+                  size: 20.0,
+                ),
+              ),
+              title: Text("Pesanan"),
+              // onTap: () {},
+            ),
+            ListTile(
+              selected: true,
+              leading: CircleAvatar(
+                child: Icon(
+                  Icons.logout,
+                  color: Colors.white,
+                  size: 20.0,
+                ),
+              ),
+              title: Text("Log Out"),
+              // onTap: () {},
+            ),
+          ],
         ),
       ),
     );
