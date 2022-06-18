@@ -136,12 +136,12 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       drawer: Drawer(
         child: Column(
-          children: const [
-            UserAccountsDrawerHeader(
+          children: [
+            const UserAccountsDrawerHeader(
               accountName: Text("Kevin"),
               accountEmail: Text("081285770221"),
             ),
-            ListTile(
+            const ListTile(
               selected: true,
               leading: CircleAvatar(
                 child: Icon(
@@ -151,21 +151,23 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               title: Text("Keranjang"),
-              // onTap: () {},
+              //onTap: () {},
             ),
             ListTile(
               selected: true,
-              leading: CircleAvatar(
+              leading: const CircleAvatar(
                 child: Icon(
                   Icons.list_alt,
                   color: Colors.white,
                   size: 20.0,
                 ),
               ),
-              title: Text("Pesanan"),
-              // onTap: () {},
+              title: const Text("Pesanan"),
+              onTap: () {
+                Navigator.pushNamed(context, '/pesanan');
+              },
             ),
-            ListTile(
+            const ListTile(
               selected: true,
               leading: CircleAvatar(
                 child: Icon(
