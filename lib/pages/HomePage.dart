@@ -31,6 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(title: const Text("Home")),
       backgroundColor: Colors.blueGrey[50],
       body: SafeArea(
@@ -61,11 +62,17 @@ class _MyHomePageState extends State<MyHomePage> {
               //   ],
               // ),
               Container(
-                margin: const EdgeInsets.only(bottom: 10),
+                height: 42,
+                margin: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.white,
+                  border: Border.all(color: Colors.black26),
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: const TextField(
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                  ),
+                      icon: Icon(Icons.search), border: InputBorder.none),
                 ),
               ),
               SizedBox(
