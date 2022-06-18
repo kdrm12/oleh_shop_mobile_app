@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oleh_shop_app/widgets/drawer.dart';
 import 'package:oleh_shop_app/models/oleh.dart';
 import 'package:oleh_shop_app/webservice/WebService.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -33,6 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(title: const Text("Home")),
       backgroundColor: Colors.blueGrey[50],
+      drawer: drawer(context),
       body: SafeArea(
         child: Container(
           margin: const EdgeInsets.all(10),
@@ -78,10 +80,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 500,
                 child: GridView.builder(
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 200,
-                      childAspectRatio: 3 / 2,
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 20),
+                    maxCrossAxisExtent: 200,
+                    childAspectRatio: 3 / 2,
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 20,
+                  ),
                   itemCount: _oleh.length,
                   itemBuilder: (BuildContext ctx, index) {
                     return GestureDetector(
@@ -131,56 +134,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ],
           ),
-        ),
-      ),
-      drawer: Drawer(
-        child: Column(
-          children: [
-            const UserAccountsDrawerHeader(
-              accountName: Text("Kevin"),
-              accountEmail: Text("081285770221"),
-            ),
-            const ListTile(
-              selected: true,
-              leading: CircleAvatar(
-                child: Icon(
-                  Icons.shopping_cart,
-                  color: Colors.white,
-                  size: 20.0,
-                ),
-              ),
-              title: Text("Keranjang"),
-              //onTap: () {},
-            ),
-            ListTile(
-              selected: true,
-              leading: const CircleAvatar(
-                child: Icon(
-                  Icons.list_alt,
-                  color: Colors.white,
-                  size: 20.0,
-                ),
-              ),
-              title: const Text("Pesanan"),
-              onTap: () {
-                Navigator.pushNamed(context, '/pesanan');
-              },
-            ),
-            ListTile(
-              selected: true,
-              leading: const CircleAvatar(
-                child: Icon(
-                  Icons.logout,
-                  color: Colors.white,
-                  size: 20.0,
-                ),
-              ),
-              title: const Text("Log Out"),
-              onTap: () {
-                Navigator.pushNamed(context, '/logout');
-              },
-            ),
-          ],
         ),
       ),
     );

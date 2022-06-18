@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oleh_shop_app/widgets/drawer.dart';
 
 class PesananPage extends StatefulWidget {
   const PesananPage({Key? key}) : super(key: key);
@@ -12,33 +13,35 @@ class _PesananPageState extends State<PesananPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blueGrey[50],
+      appBar: AppBar(title: const Text("Pesanan")),
+      drawer: drawer(context),
       body: SafeArea(
         child: Container(
           margin: const EdgeInsets.all(10),
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: const [
-                  Icon(
-                    Icons.menu,
-                    size: 50,
-                  ),
-                  Text(
-                    'OLEH SHOP',
-                    style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.w900,
-                      color: Colors.black87,
-                    ),
-                  ),
-                  Icon(
-                    Icons.account_circle_outlined,
-                    size: 50,
-                  ),
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   crossAxisAlignment: CrossAxisAlignment.center,
+              //   children: const [
+              //     Icon(
+              //       Icons.menu,
+              //       size: 50,
+              //     ),
+              //     Text(
+              //       'OLEH SHOP',
+              //       style: TextStyle(
+              //         fontSize: 40,
+              //         fontWeight: FontWeight.w900,
+              //         color: Colors.black87,
+              //       ),
+              //     ),
+              //     Icon(
+              //       Icons.account_circle_outlined,
+              //       size: 50,
+              //     ),
+              //   ],
+              // ),
               Text("ID Pemesanan",
                   textAlign: TextAlign.left,
                   style: TextStyle(

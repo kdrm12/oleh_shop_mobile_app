@@ -96,9 +96,10 @@ class SignInPage extends StatelessWidget {
                         elevation: 7.0,
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(
+                            Navigator.pushNamedAndRemoveUntil(
                               context,
                               '/home',
+                              (Route<dynamic> route) => false,
                             );
                           },
                           child: const Center(
