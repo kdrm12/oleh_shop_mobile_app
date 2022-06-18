@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:oleh_shop_app/pages/HomePage.dart';
 import 'package:oleh_shop_app/pages/DetailOlehPage.dart';
+import 'package:oleh_shop_app/pages/signup.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const MyHomePage(),
+        '/': (context) => const SignUpPage(),
         '/detail': (context) => const OlehDetail(),
       },
       //home: const MyHomePage(),
