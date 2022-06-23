@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:oleh_shop_app/widgets/drawer.dart';
+import 'package:oleh_shop_app/component/drawer.dart';
+import 'package:oleh_shop_app/component/search.dart';
 import 'package:oleh_shop_app/models/oleh.dart';
 import 'package:oleh_shop_app/webservice/WebService.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -13,6 +14,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List<oleh> _oleh = <oleh>[];
+  List<String> _nama_oleh = <String>[];
 
   @override
   void initState() {
@@ -22,9 +24,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _loadOleh() async {
     final webservice = WebService();
-    final results = await webservice.loadOleh();
+    final oleh_results = await webservice.loadOleh();
+    final namaOleh_results = <String>[];
+    for (int i = 0; i < oleh_results.length; i++) {
+      namaOleh_results.add(oleh_results[i].nama);
+    }
     setState(() {
-      _oleh = results;
+      _oleh = oleh_results;
+      _nama_oleh = namaOleh_results;
     });
   }
 
@@ -62,20 +69,20 @@ class _MyHomePageState extends State<MyHomePage> {
               //     ),
               //   ],
               // ),
-              Container(
-                height: 42,
-                margin: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: Colors.white,
-                  border: Border.all(color: Colors.black26),
-                ),
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: const TextField(
-                  decoration: InputDecoration(
-                      icon: Icon(Icons.search), border: InputBorder.none),
-                ),
-              ),
+              // Container(
+              //   height: 42,
+              //   margin: const EdgeInsets.all(10),
+              //   decoration: BoxDecoration(
+              //     borderRadius: BorderRadius.circular(12),
+              //     color: Colors.white,
+              //     border: Border.all(color: Colors.black26),
+              //   ),
+              //   padding: const EdgeInsets.symmetric(horizontal: 8),
+              //   child: const TextField(
+              //     decoration: InputDecoration(
+              //         icon: Icon(Icons.search), border: InputBorder.none),
+              //   ),
+              // ),
               SizedBox(
                 height: 500,
                 child: GridView.builder(
@@ -135,6 +142,13 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.search),
+        onPressed: () async {
+          showSearch<String>(
+              context: context, delegate: NameSearch(_nama_oleh));
+        },
       ),
     );
   }

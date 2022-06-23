@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:oleh_shop_app/widgets/drawer.dart';
+import 'package:oleh_shop_app/component/drawer.dart';
 
 class PesananPage extends StatefulWidget {
   const PesananPage({Key? key}) : super(key: key);
