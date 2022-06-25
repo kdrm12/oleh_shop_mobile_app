@@ -14,7 +14,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List<oleh> _oleh = <oleh>[];
-  List<String> _nama_oleh = <String>[];
 
   @override
   void initState() {
@@ -25,13 +24,13 @@ class _MyHomePageState extends State<MyHomePage> {
   void _loadOleh() async {
     final webservice = WebService();
     final oleh_results = await webservice.loadOleh();
-    final namaOleh_results = <String>[];
-    for (int i = 0; i < oleh_results.length; i++) {
-      namaOleh_results.add(oleh_results[i].nama);
-    }
+    // final namaOleh_results = <String>[];
+    // for (int i = 0; i < oleh_results.length; i++) {
+    //   namaOleh_results.add(oleh_results[i].nama);
+    // }
     setState(() {
       _oleh = oleh_results;
-      _nama_oleh = namaOleh_results;
+      //_nama_oleh = namaOleh_results;
     });
   }
 
@@ -146,8 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.search),
         onPressed: () async {
-          showSearch<String>(
-              context: context, delegate: NameSearch(_nama_oleh));
+          showSearch<String>(context: context, delegate: NameSearch(_oleh));
         },
       ),
     );

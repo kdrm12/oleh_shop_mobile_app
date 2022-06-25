@@ -14,6 +14,7 @@ class _OlehDetail extends State<OlehDetail> {
   Widget build(BuildContext context) {
     final entry = ModalRoute.of(context)!.settings.arguments as oleh;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.blueGrey[50],
       body: SafeArea(
         child: Container(
