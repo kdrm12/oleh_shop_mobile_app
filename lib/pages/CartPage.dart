@@ -30,7 +30,7 @@ class _CartPageState extends State<CartPage> {
                 itemBuilder: (BuildContext context, int index) {
                   return const Card(
                     child: ListTile(
-                      leading: FlutterLogo(size: 56.0),
+                      leading: Icon(Icons.shopping_bag, size: 40),
                       title: Text('Lorem Ipsum'),
                       subtitle: Text('Rp15000 (2x)'),
                       trailing: Icon(Icons.delete),

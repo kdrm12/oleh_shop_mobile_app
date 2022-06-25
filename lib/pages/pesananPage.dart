@@ -92,6 +92,7 @@ class _PesananPageState extends State<PesananPage> {
                   ElevatedButton(
                     onPressed: () {
                       // Respond to button press
+                      Navigator.pushNamed(context, '/detailPesanan');
                     },
                     child: Text('Belum Diambil'),
                   ),
