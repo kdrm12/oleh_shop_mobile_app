@@ -23,14 +23,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _loadOleh() async {
     final webservice = WebService();
-    final oleh_results = await webservice.loadOleh();
-    // final namaOleh_results = <String>[];
-    // for (int i = 0; i < oleh_results.length; i++) {
-    //   namaOleh_results.add(oleh_results[i].nama);
-    // }
+    final olehResults = await webservice.loadOleh();
     setState(() {
-      _oleh = oleh_results;
-      //_nama_oleh = namaOleh_results;
+      _oleh = olehResults;
     });
   }
 

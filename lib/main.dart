@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oleh_shop_app/pages/CartPage.dart';
 import 'package:oleh_shop_app/pages/HomePage.dart';
 import 'package:oleh_shop_app/pages/DetailOlehPage.dart';
 import 'package:oleh_shop_app/pages/signin.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         '/signin': (context) => const SignInPage(),
         '/home': (context) => const MyHomePage(),
         '/detail': (context) => const OlehDetail(),
-        // '/keranjang': (context) => const,
+        '/keranjang': (context) => const CartPage(),
         '/pesanan': (context) => const PesananPage(),
         '/logout': (context) => const SignInPage(),
       },

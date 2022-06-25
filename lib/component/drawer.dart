@@ -22,17 +22,19 @@ Drawer drawer(BuildContext context) {
             Navigator.pushReplacementNamed(context, '/home');
           },
         ),
-        const ListTile(
+        ListTile(
           selected: true,
-          leading: CircleAvatar(
+          leading: const CircleAvatar(
             child: Icon(
               Icons.shopping_cart,
               color: Colors.white,
               size: 20.0,
             ),
           ),
-          title: Text("Keranjang"),
-          //onTap: () {},
+          title: const Text("Keranjang"),
+          onTap: () {
+            Navigator.pushReplacementNamed(context, '/keranjang');
+          },
         ),
         ListTile(
           selected: true,
