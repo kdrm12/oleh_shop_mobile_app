@@ -1,7 +1,5 @@
 import 'package:oleh_shop_app/models/oleh.dart';
 
-enum ErrorPPOB { payed, unknow, failed }
-
 class Constant {
   static final List<oleh> listCart = [
     const oleh(
