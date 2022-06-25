@@ -33,7 +33,21 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(title: const Text("Home")),
+      appBar: AppBar(
+        title: const Text("Home"),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: GestureDetector(
+              onTap: () async {
+                showSearch<String>(
+                    context: context, delegate: NameSearch(_oleh));
+              },
+              child: const Icon(Icons.search),
+            ),
+          )
+        ],
+      ),
       backgroundColor: Colors.blueGrey[50],
       drawer: drawer(context),
       body: SafeArea(
@@ -90,12 +104,6 @@ class _MyHomePageState extends State<MyHomePage> {
             },
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.search),
-        onPressed: () async {
-          showSearch<String>(context: context, delegate: NameSearch(_oleh));
-        },
       ),
     );
   }
