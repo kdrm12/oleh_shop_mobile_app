@@ -3,6 +3,7 @@ import 'package:oleh_shop_app/pages/CartPage.dart';
 import 'package:oleh_shop_app/pages/DetailPesanan.dart';
 import 'package:oleh_shop_app/pages/HomePage.dart';
 import 'package:oleh_shop_app/pages/DetailOlehPage.dart';
+import 'package:oleh_shop_app/pages/SplashScreen.dart';
 import 'package:oleh_shop_app/pages/signin.dart';
 import 'package:oleh_shop_app/pages/signup.dart';
 import 'package:oleh_shop_app/pages/pesananPage.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
         '/pesanan': (context) => const PesananPage(),
         '/logout': (context) => const SignInPage(),
       },
-      //home: const MyHomePage(),
+      home: const SplashScreen(),
     );
   }
 }
